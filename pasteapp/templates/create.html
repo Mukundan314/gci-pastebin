@@ -9,6 +9,7 @@
         text-align: center;
         margin-left: 15%;
         margin-right: 15%;
+        font-family: sans-serif;
       }
 
       #title {
@@ -94,7 +95,9 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ title, content, language })
-        }).then(res => res.json()).then(console.log)
+        }).then(res => res.json()).then(({ id }) => {
+          window.location.href = '/view/' + id
+        })
       }
 
       for (let language of languages) {
