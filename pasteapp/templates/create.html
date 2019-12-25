@@ -1,0 +1,107 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.css" />
+    <style>
+      body {
+        text-align: center;
+        margin-left: 15%;
+        margin-right: 15%;
+      }
+
+      #title {
+        font-size: 2em;
+        text-align: center;
+        width: 50%;
+        max-width: 20em;
+      }
+
+      .CodeMirror {
+        height: auto;
+        border: 1px solid grey;
+        text-align: left;
+      }
+
+      .language-selector {
+        float: left;
+      }
+
+      .save-button {
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <input value="Untitled Paste" id="title" />
+
+    <br><br>
+
+    <input id="line-numbers" type="checkbox" onclick="toggleLineNumbers()" /> Line Numbers
+    <input id="line-wrap" type="checkbox" onclick="toggleLineWrap()" /> Line Wrap
+
+    <br><br>
+
+    <textarea id="editor"></textarea>
+
+    <br>
+
+    <div class="language-selector">
+      Language: <select onchange="changeLanguage()" id="language-selector">
+        <option>plaintext</option>
+      </select>
+    </div>
+
+    <button class="save-button" onclick="save()">Save</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/addon/mode/loadmode.js"></script>
+
+    <script src="{% static "languages.js" %}"></script>
+
+    <script>
+      CodeMirror.modeURL = "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/mode/%N/%N.js"
+
+      var languageSelector = document.getElementById("language-selector")
+      var lineNumbers = document.getElementById('line-numbers')
+      var lineWrap = document.getElementById('line-wrap')
+      var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+        lineNumbers: lineNumbers.checked,
+        lineWrap: lineWrap.checked,
+        viewportMargin: Infinity
+      })
+
+      function toggleLineNumbers() {
+        editor.setOption("lineNumbers", lineNumbers.checked)
+      }
+
+      function toggleLineWrap() {
+        editor.setOption("lineWrapping", lineWrap.checked)
+      }
+
+      function changeLanguage() {
+        editor.setOption("mode", languageSelector.value)
+        CodeMirror.autoLoadMode(editor, languageSelector.value);
+      }
+
+      function save() {
+        var title = document.getElementById("title").value
+        var content = editor.getValue()
+        var language = languageSelector.value
+
+        fetch('/api/create/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title, content, language })
+        }).then(res => res.json()).then(console.log)
+      }
+
+      for (let language of languages) {
+        var option = document.createElement("option")
+        option.text = language
+        languageSelector.add(option)
+      }
+    </script>
+  </body>
+</html>

@@ -33,3 +33,7 @@ def view_api(request, paste_id):
         'language': paste.language,
         'createdOn': paste.created_on,
     })
+
+
+def create(request):
+    return render(request, 'create.html')
