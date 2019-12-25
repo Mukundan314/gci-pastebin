@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.css" />
+    <style>
+      body {
+        text-align: center;
+        margin-left: 15%;
+        margin-right: 15%;
+        font-family: sans-serif;
+      }
+
+      .CodeMirror {
+        height: auto;
+        border: 1px solid grey;
+        text-align: left;
+      }
+
+      .language-selector {
+        float: left;
+      }
+
+      .save-button {
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>{{ title }}</h1>
+
+    <p>Created on {{ created_on }}</p>
+
+    <input id="line-numbers" type="checkbox" onclick="toggleLineNumbers()" /> Line Numbers
+    <input id="line-wrap" type="checkbox" onclick="toggleLineWrap()" /> Line Wrap
+
+    <br><br>
+
+    <textarea id="editor">{{ content }}</textarea>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/mode/{{ language }}/{{ language }}.js"></script>
+
+    <script>
+      var lineNumbers = document.getElementById('line-numbers')
+      var lineWrap = document.getElementById('line-wrap')
+      var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+        lineNumbers: lineNumbers.checked,
+        lineWrap: lineWrap.checked,
+        readOnly: "nocursor",
+        viewportMargin: Infinity
+      })
+
+      function toggleLineNumbers() {
+        editor.setOption("lineNumbers", lineNumbers.checked)
+      }
+
+      function toggleLineWrap() {
+        editor.setOption("lineWrapping", lineWrap.checked)
+      }
+    </script>
+  </body>
+</html>

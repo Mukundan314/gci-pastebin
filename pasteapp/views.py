@@ -37,3 +37,14 @@ def view_api(request, paste_id):
 
 def create(request):
     return render(request, 'create.html')
+
+
+def view(request, paste_id):
+    paste = Paste.objects.get(id=paste_id)
+
+    return render(request, 'view.html', {
+        'title': paste.title,
+        'content': paste.content,
+        'language': paste.language,
+        'created_on': paste.created_on,
+    })
