@@ -35,6 +35,10 @@ def view_api(request, paste_id):
     })
 
 
+def index(request):
+    return render(request, 'index.html')
+
+
 def create(request):
     return render(request, 'create.html')
 
