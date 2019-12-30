@@ -1,0 +1,9 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.css");
+@import url('https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/theme/base16-dark.min.css');
+
+.CodeMirror {
+    height: auto;
+    border: 2px solid #383838;
+    text-align: left;
+    line-height: 1.5;
+}

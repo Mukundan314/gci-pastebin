@@ -48,6 +48,7 @@ def view(request, paste_id):
         paste = Paste.objects.get(id=paste_id)
 
         return render(request, 'view.html', {
+            'paste_id': paste_id,
             'title': paste.title,
             'content': paste.content,
             'language': paste.language,

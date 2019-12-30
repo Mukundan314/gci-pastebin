@@ -1,41 +1,25 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>{{ title }} | Pastebin</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.css" />
-    <style>
-      body {
-        text-align: center;
-        margin-left: 15%;
-        margin-right: 15%;
-        font-family: sans-serif;
-      }
-
-      .CodeMirror {
-        height: auto;
-        border: 1px solid grey;
-        text-align: left;
-      }
-
-      .language-selector {
-        float: left;
-      }
-
-      .save-button {
-        float: right;
-      }
-    </style>
+    <link rel="stylesheet" href="{% static "main.css" %}" />
+    <link rel="stylesheet" href="{% static "codemirror.css" %}" />
   </head>
   <body>
     <h1>{{ title }}</h1>
 
-    <p>Created on {{ created_on }}</p>
-
-    <input id="line-numbers" type="checkbox" onclick="toggleLineNumbers()" /> Line Numbers
-    <input id="line-wrap" type="checkbox" onclick="toggleLineWrap()" /> Line Wrap
-
-    <br><br>
+    <p>
+      Paste ID: <a href="{{ request.build_absolute_uri }}">{{ paste_id }}</a><br>
+      URL: <a href="{{ request.build_absolute_uri }}">{{ request.build_absolute_uri }}</a><br>
+      <br>
+      Created on {{ created_on }}<br>
+      <br>
+      <input id="line-numbers" type="checkbox" onclick="toggleLineNumbers()" /> Line Numbers
+      <input id="line-wrap" type="checkbox" onclick="toggleLineWrap()" /> Line Wrap
+    </p>
 
     <textarea id="editor">{{ content }}</textarea>
 
@@ -49,7 +33,8 @@
         lineNumbers: lineNumbers.checked,
         lineWrap: lineWrap.checked,
         readOnly: "nocursor",
-        viewportMargin: Infinity
+        viewportMargin: Infinity,
+        theme: "base16-dark",
       })
 
       function toggleLineNumbers() {

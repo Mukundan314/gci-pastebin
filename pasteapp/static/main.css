@@ -1,0 +1,45 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/theme/base16-dark.min.css');
+
+body {
+    background: #282828;
+    background-image: url('https://www.transparenttextures.com/patterns/3px-tile.png');
+    color: #d8d8d8;
+
+    margin-left: 20%;
+    margin-right: 20%;
+
+    text-align: center;
+
+    font-family: sans-serif;
+}
+
+input {
+    background: #181818;
+    color: #d8d8d8;
+
+    border: 1px solid #383838;
+    padding: 5px;
+}
+
+button, select {
+    background: #181818;
+    color: #b8b8b8;
+
+    border: none;
+    padding: 10px;
+
+    font-size: 16px;
+}
+
+button:hover {
+    background: #585858;
+    cursor: pointer;
+}
+
+a {
+  color: #dc9656;
+}
+
+a:hover {
+  color: #ab4642;
+}

@@ -4,26 +4,16 @@
 <html>
   <head>
     <title>Create | Pastebin</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.css" />
-    <style>
-      body {
-        text-align: center;
-        margin-left: 15%;
-        margin-right: 15%;
-        font-family: sans-serif;
-      }
 
+    <link rel="stylesheet" href="{% static "main.css" %}" />
+    <link rel="stylesheet" href="{% static "codemirror.css" %}" />
+
+    <style>
       #title {
         font-size: 2em;
         text-align: center;
         width: 50%;
         max-width: 20em;
-      }
-
-      .CodeMirror {
-        height: auto;
-        border: 1px solid grey;
-        text-align: left;
       }
 
       .language-selector {
@@ -36,12 +26,17 @@
     </style>
   </head>
   <body>
+    <br>
+
     <input value="Untitled Paste" id="title" />
 
     <br><br>
 
-    <input id="line-numbers" type="checkbox" onclick="toggleLineNumbers()" /> Line Numbers
-    <input id="line-wrap" type="checkbox" onclick="toggleLineWrap()" /> Line Wrap
+    <input id="line-numbers" type="checkbox" onclick="toggleLineNumbers()" />
+    <label for="line-numbers">Line Numbers</label>
+
+    <input id="line-wrap" type="checkbox" onclick="toggleLineWrap()" />
+    <label for="line-wrap">Line Wrap</label>
 
     <br><br>
 
@@ -68,10 +63,12 @@
       var languageSelector = document.getElementById("language-selector")
       var lineNumbers = document.getElementById('line-numbers')
       var lineWrap = document.getElementById('line-wrap')
+
       var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
         lineNumbers: lineNumbers.checked,
         lineWrap: lineWrap.checked,
-        viewportMargin: Infinity
+        viewportMargin: Infinity,
+        theme: "base16-dark",
       })
 
       function toggleLineNumbers() {
