@@ -1,16 +1,11 @@
-@import url('https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/theme/base16-dark.min.css');
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css');
 
 body {
     background: #282828;
     background-image: url('https://www.transparenttextures.com/patterns/3px-tile.png');
     color: #d8d8d8;
 
-    margin-left: 20%;
-    margin-right: 20%;
-
     text-align: center;
-
-    font-family: sans-serif;
 }
 
 input {
@@ -26,7 +21,7 @@ button, select {
     color: #b8b8b8;
 
     border: none;
-    padding: 10px;
+    padding: 10px 14px;
 
     font-size: 16px;
 }
@@ -37,9 +32,43 @@ button:hover {
 }
 
 a {
-  color: #dc9656;
+    color: #dc9656;
 }
 
 a:hover {
-  color: #ab4642;
+    color: #ab4642;
+}
+
+.navbar-custom {
+    background: #383838;
+    text-align: left;
+}
+
+.nav-link {
+    color: #d8d8d8;
+}
+
+.nav-link:hover {
+    color: #e8e8e8;
+}
+
+.navbar-brand {
+    font-size: 25px;
+    color: #7cafc2;
+}
+
+.navbar-toggler {
+    background: #181818;
+}
+
+.main {
+    padding-top: 20px;
+
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#pasteID {
+    padding: 10px;
+    width: 36ch;
 }

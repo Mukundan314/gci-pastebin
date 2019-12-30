@@ -26,34 +26,40 @@
     </style>
   </head>
   <body>
-    <br>
+    {% include "navbar.html" %}
 
-    <input value="Untitled Paste" id="title" />
+    <div class="main">
+      <input value="Untitled Paste" id="title" />
 
-    <br><br>
+      <br><br>
 
-    <input id="line-numbers" type="checkbox" onclick="toggleLineNumbers()" />
-    <label for="line-numbers">Line Numbers</label>
+      <input id="line-numbers" type="checkbox" onclick="toggleLineNumbers()" />
+      <label for="line-numbers">Line Numbers</label>
 
-    <input id="line-wrap" type="checkbox" onclick="toggleLineWrap()" />
-    <label for="line-wrap">Line Wrap</label>
+      <input id="line-wrap" type="checkbox" onclick="toggleLineWrap()" />
+      <label for="line-wrap">Line Wrap</label>
 
-    <br><br>
+      <br><br>
 
-    <textarea id="editor"></textarea>
+      <textarea id="editor"></textarea>
 
-    <br>
+      <br>
 
-    <div class="language-selector">
-      Language: <select onchange="changeLanguage()" id="language-selector">
-        <option>plaintext</option>
-      </select>
+      <div class="language-selector">
+        Language: <select onchange="changeLanguage()" id="language-selector">
+          <option>plaintext</option>
+        </select>
+      </div>
+
+      <button class="save-button" onclick="save()">Save</button>
     </div>
-
-    <button class="save-button" onclick="save()">Save</button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/addon/mode/loadmode.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
     <script src="{% static "languages.js" %}"></script>
 
