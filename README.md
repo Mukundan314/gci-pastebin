@@ -2,7 +2,7 @@
 
 ## Administration
 
-Creating user for administration can be created by doing `python manage.py createsuperuser`  
+User for administration can be created by doing `python manage.py createsuperuser`  
 Pastes can be edited and deleted at: `<domain>/admin/pasteapp/paste/`
 
 ## Running the server
