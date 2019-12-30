@@ -52,7 +52,7 @@ a:hover {
     color: #e8e8e8;
 }
 
-.navbar-brand {
+.navbar-brand, .navbar-brand:hover {
     font-size: 25px;
     color: #7cafc2;
 }
@@ -70,5 +70,5 @@ a:hover {
 
 #pasteID {
     padding: 10px;
-    width: 36ch;
+    width: 40ch;
 }

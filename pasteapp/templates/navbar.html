@@ -11,9 +11,15 @@
         <a class="nav-link" href="/create">Create</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <form class="form-inline" onsubmit="view();return false">
       <input id="pasteID" type="search" placeholder="Paste ID">
       <button>View</button>
     </form>
   </div>
 </nav>
+
+<script>
+  function view() {
+    window.location.href = '/view/' + document.getElementById('pasteID').value
+  }
+</script>

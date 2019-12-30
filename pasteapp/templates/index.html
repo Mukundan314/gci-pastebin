@@ -1,68 +1,38 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>Pastebin</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="{% static "main.css" %}" />
     <style>
       body {
-        font-family: sans-serif;
-        margin: 0;
-      }
-
-      div {
-        display: flex;
-        flex-flow: column wrap;
-        align-items: center;
-        width: 100%;
         position: absolute;
-        transform: translateY(-50%);
         top: 50%;
-      }
-
-      button {
-        padding: 10px;
-        background: #2196F3;
-        color: white;
-        font-size: 17px;
-        border: 1px solid grey;
-        cursor: pointer;
-        width: 10%;
-        min-width: 60px;
-      }
-
-      .create {
-        min-width: 200px;
-      }
-
-      input {
-        padding: 10px;
-        font-size: 17px;
-        border: 1px solid grey;
-        background: #f1f1f1;
-        text-align: center;
-        width: 50%;
-        min-width: 240px;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
     </style>
   </head>
   <body>
-    <div>
-      <input id="pasteId" placeholder="ID of paste"/>
+    <h1>Pastebin</h1>
+    <br>
+    <p>
+      <input id="pasteID" type="search" placeholder="Paste ID">
+      <button onclick="view()">View</button><br>
       <br>
-      <button onclick="view()">View</button>
-      <h3>OR</h3>
-      <button onclick="create()" class="create">Create a new paste</button>
-    </div>
+      <strong>OR</strong><br>
+      <br>
+      <button onclick="create()">Create a new paste</button>
+    </p>
 
     <script>
       function view() {
-        var pasteId = document.getElementById("pasteId").value
-        window.location.href = "/view/" + pasteId
+        window.location.href = '/view/' + document.getElementById('pasteID').value
       }
 
       function create() {
-        window.location.href = "/create"
+        window.location.href = '/create'
       }
     </script>
   </body>
